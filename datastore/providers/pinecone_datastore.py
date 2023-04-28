@@ -46,7 +46,7 @@ class PineconeDataStore(DataStore):
                 )
                 pinecone.create_index(
                     PINECONE_INDEX,
-                    dimension=1536,  # dimensionality of OpenAI ada v2 embeddings
+                    dimension=768,  # dimensionality of OpenAI ada v2 embeddings
                     metadata_config={"indexed": fields_to_index},
                 )
                 self.index = pinecone.Index(PINECONE_INDEX)
@@ -141,7 +141,7 @@ class PineconeDataStore(DataStore):
                 metadata = result.metadata
                 # Remove document id and text from metadata and store it in a new variable
                 metadata_without_text = (
-                    {key: value for key, value in metadata.items() if key != "text"}
+                    {key: value for key, value in metadata.items() if key != "articles"}
                     if metadata
                     else None
                 )
@@ -158,7 +158,7 @@ class PineconeDataStore(DataStore):
                 result = DocumentChunkWithScore(
                     id=result.id,
                     score=score,
-                    text=metadata["text"] if metadata and "text" in metadata else None,
+                    text=metadata["articles"] if metadata and "articles" in metadata else None,
                     metadata=metadata_without_text,
                 )
                 query_results.append(result)
