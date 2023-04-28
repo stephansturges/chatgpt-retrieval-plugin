@@ -1,6 +1,6 @@
 {
   "schema_version": "v1",
-  "name_for_model": "chatWikipedia",
+  "name_for_model": "Wikipedia on Pinecone",
   "name_for_human": "curious human",
   "description_for_model": "Use this tool to access information on Wikipedia, the world's largest encyclopedia. Do not use this tool if the human doesn't seem to be looking for factual information which may be covered in an encyclopedia.",
   "description_for_human": "Access to all of English-language Wikipedia!",
@@ -10,10 +10,10 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://your-app-url.com/.well-known/openapi.yaml",
+    "url": "https://king-prawn-app-5lcva.ondigitalocean.app/.well-known/openapi.yaml",
     "has_user_authentication": false
   },
-  "logo_url": "https://your-app-url.com/.well-known/logo.png",
-  "contact_email": "hello@contact.com", 
+  "logo_url": "https://king-prawn-app-5lcva.ondigitalocean.app/.well-known/logo.png",
+  "contact_email": "stephan.sturges@gmail.com", 
   "legal_info_url": "http://example.com/legal-info"
 }

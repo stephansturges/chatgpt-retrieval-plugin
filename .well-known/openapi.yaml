@@ -1,10 +1,10 @@
 openapi: 3.0.2
 info:
-  title: Retrieval Plugin API
-  description: A retrieval API for querying and filtering documents based on natural language queries and metadata
+  title: Wikipedia API
+  description: A retrieval API for querying Wikipedia
   version: 1.0.0
   servers:
-    - url: https://your-app-url.com
+    - url: https://king-prawn-app-5lcva.ondigitalocean.app
 paths:
   /query:
     post:
