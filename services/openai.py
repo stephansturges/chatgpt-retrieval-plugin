@@ -19,7 +19,7 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
         print("got results from replicate")
         print(str(embeddings))
     
-    return embeddings_list
+    return [embeddings_list.tolist()]
 
 # @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
 # def get_embeddings(texts: List[str]) -> List[List[float]]:
