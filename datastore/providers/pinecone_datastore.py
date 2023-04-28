@@ -172,7 +172,7 @@ class PineconeDataStore(DataStore):
             #     )
             #     query_results.append(result)
 
-            res = pineconeindex.query(query.embedding, top_k=5, include_metadata=True, namespace="articles")
+            res = pineconeindex.query([query.embedding], top_k=3, include_metadata=True, namespace="articles")
             chosen_sections = []    
 
             for match in res['matches']:
