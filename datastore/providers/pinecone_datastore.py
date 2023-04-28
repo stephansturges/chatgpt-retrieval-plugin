@@ -137,11 +137,12 @@ class PineconeDataStore(DataStore):
 
             query_results: List[DocumentChunkWithScore] = []
             for result in query_response.matches:
+                print(str(result))
                 score = result.score
                 metadata = result.metadata
                 # Remove document id and text from metadata and store it in a new variable
                 metadata_without_text = (
-                    {key: value for key, value in metadata.items() if key != "articles"}
+                    {key: value for key, value in metadata.items() if key != "article"}
                     if metadata
                     else None
                 )
