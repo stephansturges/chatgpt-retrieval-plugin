@@ -16,6 +16,8 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
         
         embeddings = output[0]["embedding"]
         embeddings_list.append(embeddings)
+        print("got results from replicate")
+        print(str(embeddings))
     
     return embeddings_list
 
