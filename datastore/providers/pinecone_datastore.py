@@ -134,7 +134,7 @@ class PineconeDataStore(DataStore):
                     top_k=query.top_k,
                     vector=query.embedding,
                     filter=pinecone_filter,
-                    include_metadata=True,  
+                    include_metadata=False,  
                 )
             
             except Exception as e:
@@ -150,7 +150,7 @@ class PineconeDataStore(DataStore):
                 metadata = result.metadata
                 # Remove document id and text from metadata and store it in a new variable
                 metadata_without_text = (
-                    {key: value for key, value in metadata.items() if key != "article"}
+                    {key: value for key, value in metadata.items() if key != "text"}
                     if metadata
                     else None
                 )
@@ -167,7 +167,7 @@ class PineconeDataStore(DataStore):
                 result = DocumentChunkWithScore(
                     id=result.id,
                     score=score,
-                    text=metadata["articles"] if metadata and "articles" in metadata else None,
+                    text=metadata["text"] if metadata and "text" in metadata else None,
                     metadata=metadata_without_text,
                 )
                 query_results.append(result)
