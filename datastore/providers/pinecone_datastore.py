@@ -129,7 +129,7 @@ class PineconeDataStore(DataStore):
                     top_k=query.top_k,
                     vector=query.embedding,
                     filter=pinecone_filter,
-                    include_metadata=True,
+                    include_metadata=False,
                 )
             except Exception as e:
                 print(f"Error querying index: {e}")
