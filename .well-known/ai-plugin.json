@@ -1,6 +1,6 @@
 {
   "schema_version": "v1",
-  "name_for_model": "Wikipedia-search",
+  "name_for_model": "WikipediaSearch",
   "name_for_human": "WikipediaGPT",
   "description_for_model": "Use this tool to access information on Wikipedia, the world's largest encyclopedia. Do not use this tool if the human doesn't seem to be looking for factual information which may be covered in an encyclopedia.",
   "description_for_human": "Access to all of English-language Wikipedia!",
