@@ -1,32 +1,46 @@
 from typing import List
 import openai
-
+import replicate
 
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
-
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
 def get_embeddings(texts: List[str]) -> List[List[float]]:
-    """
-    Embed texts using OpenAI's ada model.
+    embeddings_list = []
+    
+    for text in texts:
+        output = replicate.run(
+            "replicate/all-mpnet-base-v2:a441e62645d851373aa8a000e1471e8ac2f7c61a4b4148984bc190fc0b4c1f03",
+            input={"text": text }
+        )
+        
+        embeddings = output[0]["embedding"]
+        embeddings_list.append(embeddings)
+    
+    return embeddings_list
 
-    Args:
-        texts: The list of texts to embed.
+# @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
+# def get_embeddings(texts: List[str]) -> List[List[float]]:
+#     """
+#     Embed texts using OpenAI's ada model.
 
-    Returns:
-        A list of embeddings, each of which is a list of floats.
+#     Args:
+#         texts: The list of texts to embed.
 
-    Raises:
-        Exception: If the OpenAI API call fails.
-    """
-    # Call the OpenAI API to get the embeddings
-    response = openai.Embedding.create(input=texts, model="text-embedding-ada-002")
+#     Returns:
+#         A list of embeddings, each of which is a list of floats.
 
-    # Extract the embedding data from the response
-    data = response["data"]  # type: ignore
+#     Raises:
+#         Exception: If the OpenAI API call fails.
+#     """
+#     # Call the OpenAI API to get the embeddings
+#     response = openai.Embedding.create(input=texts, model="text-embedding-ada-002")
 
-    # Return the embeddings as a list of lists of floats
-    return [result["embedding"] for result in data]
+#     # Extract the embedding data from the response
+#     data = response["data"]  # type: ignore
+
+#     # Return the embeddings as a list of lists of floats
+#     return [result["embedding"] for result in data]
 
 
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
