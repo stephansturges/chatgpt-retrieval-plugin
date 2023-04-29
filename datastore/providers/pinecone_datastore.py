@@ -122,11 +122,6 @@ class PineconeDataStore(DataStore):
             # Convert the metadata filter object to a dict with pinecone filter expressions
             pinecone_filter = self._get_pinecone_filter(query.filter)
 
-            print("this is pinecone_filter:")
-            print(pinecone_filter)
-
-            print("this is query embedding:")
-            print(query.embedding)
             try:
                 # Query the index with the query embedding, filter, and top_k
                 query_response = self.index.query(
@@ -134,17 +129,13 @@ class PineconeDataStore(DataStore):
                     top_k=query.top_k,
                     vector=query.embedding,
                     filter=pinecone_filter,
-                    include_metadata=False,  
+                    include_metadata=True,
                 )
-            
             except Exception as e:
                 print(f"Error querying index: {e}")
                 raise e
 
             query_results: List[DocumentChunkWithScore] = []
-            print("query_results:")
-            print(query_results)
-
             for result in query_response.matches:
                 score = result.score
                 metadata = result.metadata
@@ -171,16 +162,7 @@ class PineconeDataStore(DataStore):
                     metadata=metadata_without_text,
                 )
                 query_results.append(result)
-
-            # res = pineconeindex.query([query.embedding], top_k=3, include_metadata=True, namespace="articles")
-            # chosen_sections = []    
-
-            # for match in res['matches']:
-            #     print("top matches:")
-            #     print(f"{match['score']:.2f}: {match['metadata']['text']}")
-            #     document_section = match['metadata']['text']
-            #     chosen_sections.append("  " + document_section)
-            # return QueryResult(query=query.query, results=chosen_sections)
+            return QueryResult(query=query.query, results=query_results)
 
         # Use asyncio.gather to run multiple _single_query coroutines concurrently and collect their results
         results: List[QueryResult] = await asyncio.gather(
