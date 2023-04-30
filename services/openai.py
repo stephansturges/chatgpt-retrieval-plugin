@@ -42,6 +42,7 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
     data = response["data"]  # type: ignore
 
     # Return the embeddings as a list of lists of floats
+    print([result["embedding"] for result in data])
     return [result["embedding"] for result in data]
 
 
