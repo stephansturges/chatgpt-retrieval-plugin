@@ -122,6 +122,9 @@ class PineconeDataStore(DataStore):
             # Convert the metadata filter object to a dict with pinecone filter expressions
             pinecone_filter = self._get_pinecone_filter(query.filter)
 
+            print("pinecone_filter")
+            print(pinecone_filter)
+
             try:
                 # Query the index with the query embedding, filter, and top_k
                 query_response = self.index.query(
@@ -134,6 +137,9 @@ class PineconeDataStore(DataStore):
             except Exception as e:
                 print(f"Error querying index: {e}")
                 raise e
+
+            print("query_response.matches")
+            print(query_response.matches)
 
             query_results: List[DocumentChunkWithScore] = []
             for result in query_response.matches:
@@ -161,6 +167,8 @@ class PineconeDataStore(DataStore):
                     text=metadata["text"] if metadata and "text" in metadata else None,
                     metadata=metadata_without_text,
                 )
+                print("formatted query result:")
+                print(result)
                 query_results.append(result)
             return QueryResult(query=query.query, results=query_results)
 

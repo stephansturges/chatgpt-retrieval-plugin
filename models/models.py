@@ -52,6 +52,7 @@ class DocumentMetadataFilter(BaseModel):
 
 
 class Query(BaseModel):
+    namespace: str
     query: str
     filter: Optional[DocumentMetadataFilter] = None
     top_k: Optional[int] = 3
