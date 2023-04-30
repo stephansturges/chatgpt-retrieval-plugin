@@ -25,29 +25,29 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
     
     return embeddings_list
 
-@retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
-def get_embeddings(texts: List[str]) -> List[List[float]]:
-    """
-    Embed texts using OpenAI's ada model.
+# @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
+# def get_embeddings(texts: List[str]) -> List[List[float]]:
+#     """
+#     Embed texts using OpenAI's ada model.
 
-    Args:
-        texts: The list of texts to embed.
+#     Args:
+#         texts: The list of texts to embed.
 
-    Returns:
-        A list of embeddings, each of which is a list of floats.
+#     Returns:
+#         A list of embeddings, each of which is a list of floats.
 
-    Raises:
-        Exception: If the OpenAI API call fails.
-    """
-    # Call the OpenAI API to get the embeddings
-    response = openai.Embedding.create(input=texts, model="text-embedding-ada-002")
+#     Raises:
+#         Exception: If the OpenAI API call fails.
+#     """
+#     # Call the OpenAI API to get the embeddings
+#     response = openai.Embedding.create(input=texts, model="text-embedding-ada-002")
 
-    # Extract the embedding data from the response
-    data = response["data"]  # type: ignore
+#     # Extract the embedding data from the response
+#     data = response["data"]  # type: ignore
 
-    # Return the embeddings as a list of lists of floats
-    print([result["embedding"] for result in data])
-    return [result["embedding"] for result in data]
+#     # Return the embeddings as a list of lists of floats
+#     print([result["embedding"] for result in data])
+#     return [result["embedding"] for result in data]
 
 
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
