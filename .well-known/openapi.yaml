@@ -9,7 +9,7 @@ paths:
   /query:
     post:
       summary: Query
-      description: Accepts search query objects array each with a query. Feel free to make multiple queries at once, and always search using long expressions and never single words, names or titles! Split queries if ResponseTooLargeError occurs.
+      description: Accepts search query objects array each with a query. Always make a few queries at once, and always search using expressions and never single words, names or titles! If a search doesn't work, change the language of the query. Split queries if ResponseTooLargeError occurs.
       operationId: query_query_post
       requestBody:
         content:
