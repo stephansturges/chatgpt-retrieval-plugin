@@ -9,7 +9,7 @@ paths:
   /query:
     post:
       summary: Query
-      description: Accepts search query objects array each with query and optional filter. Break down complex questions into sub-questions and always search neigbouring expressions as well to get more context, never do a single-query query. Split queries if ResponseTooLargeError occurs.
+      description: Accepts search query objects array each with query and optional filter. Feel free to make multiple queries at a time, and always search using long expressions and never single words, names or titles! Split queries if ResponseTooLargeError occurs.
       operationId: query_query_post
       requestBody:
         content:
