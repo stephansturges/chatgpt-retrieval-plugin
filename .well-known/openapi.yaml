@@ -12,6 +12,8 @@ paths:
       description: Accepts search query objects array each with a query. Always search using expressions and never single words, names or titles! Use subqueries to chain avenues of exploration. If a search doesn't work, change the language of the query. Split queries if ResponseTooLargeError occurs.
       operationId: query_query_post
       requestBody:
+        description: The main subject the user is asking about.
+        required: true
         content:
           application/json:
             schema:
@@ -19,7 +21,7 @@ paths:
         required: true
       responses:
         "200":
-          description: Successful Response
+          description: The main suject we are investigating used to make prompts for subqueries.
           content:
             application/json:
               schema:
@@ -35,9 +37,10 @@ paths:
   /subquery:
     post:
       summary: SubQuery gets more info on a subsection of the query
-      description: Accepts search query objects array each with a query. If the main query is too specific, use subqueries to search wider by asking secondary questions that inform the main subject.
+      description: Accepts search query objects array each with a query. After the main query, use subqueries to search wider by asking secondary questions that inform the main subject.
       operationId: query_query_post
       requestBody:
+        description: A query that informs on a subection of the main subject to create richer context.
         content:
           application/json:
             schema:
@@ -45,7 +48,7 @@ paths:
         required: true
       responses:
         "200":
-          description: Successful Response
+          description: Extra context that can be used to inform the main line of investigation.
           content:
             application/json:
               schema:
