@@ -9,7 +9,33 @@ paths:
   /query:
     post:
       summary: Query
-      description: Accepts search query objects array each with a query. Always make a few queries at once, and always search using expressions and never single words, names or titles! If a search doesn't work, change the language of the query. Split queries if ResponseTooLargeError occurs.
+      description: Accepts search query objects array each with a query. Always search using expressions and never single words, names or titles! Use subqueries to chain avenues of exploration. If a search doesn't work, change the language of the query. Split queries if ResponseTooLargeError occurs.
+      operationId: query_query_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QueryRequest"
+        required: true
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QueryResponse"
+        "422":
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+      security:
+        - HTTPBearer: []
+  /subquery:
+    post:
+      summary: SubQuery gets more info on a subsection of the query
+      description: Accepts search query objects array each with a query. If the main query is too specific, use subqueries to search wider by asking secondary questions that inform the main subject.
       operationId: query_query_post
       requestBody:
         content:

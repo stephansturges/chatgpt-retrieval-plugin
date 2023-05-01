@@ -2,7 +2,7 @@
   "schema_version": "v1",
   "name_for_model": "WikipediaDatabaseSearch",
   "name_for_human": "WikipediaOnPinecone",
-  "description_for_model": "Use this tool to access information on Wikipedia, the world's largest encyclopedia. Do not use this tool if the human doesn't seem to be looking for factual information which may be covered in an encyclopedia.",
+  "description_for_model": "Use this tool to access information on Wikipedia, the world's largest encyclopedia. Whenever factual information is required, Wikipedia is a great source.",
   "description_for_human": "Access to all of English-language Wikipedia!",
   "auth": {
     "type": "user_http",
