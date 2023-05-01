@@ -106,7 +106,7 @@ class PineconeDataStore(DataStore):
 
         return doc_ids
 
-    @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
+    @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(9))
     async def _query(
         self,
         queries: List[QueryWithEmbedding],

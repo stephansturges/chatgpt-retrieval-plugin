@@ -9,7 +9,7 @@ paths:
   /query:
     post:
       summary: Query
-      description: Accepts search query objects array each with a query. Always search using expressions and never single words, names or titles! Create and use subqueries to chain avenues of exploration. If a search doesn't work, change the language of the query. Split queries if ResponseTooLargeError occurs.
+      description: Accepts search query objects array each with a query. Always search using phrases and never single words, names or titles! If a search doesn't work to get the information do some subqueries. Split queries if ResponseTooLargeError occurs.
       operationId: query_query_post
       requestBody:
         description: The main subject the user is asking about.
