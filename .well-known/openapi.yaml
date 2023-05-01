@@ -9,7 +9,7 @@ paths:
   /query:
     post:
       summary: Query
-      description: Accepts search query objects array each with a query. Always search using expressions and never single words, names or titles! Use subqueries to chain avenues of exploration. If a search doesn't work, change the language of the query. Split queries if ResponseTooLargeError occurs.
+      description: Accepts search query objects array each with a query. Always search using expressions and never single words, names or titles! Create and use subqueries to chain avenues of exploration. If a search doesn't work, change the language of the query. Split queries if ResponseTooLargeError occurs.
       operationId: query_query_post
       requestBody:
         description: The main subject the user is asking about.
@@ -37,7 +37,7 @@ paths:
   /subquery:
     post:
       summary: SubQuery gets more info on a subsection of the query
-      description: Accepts search query objects array each with a query. After the main query, use subqueries to search wider by asking secondary questions that inform the main subject.
+      description: Accepts search query objects array each with a query. After the main query, use subqueries to search wider by asking secondary questions that inform the main subject. Prompt the user to confirm if you should go deeper on a subquery direction.
       operationId: query_query_post
       requestBody:
         description: A query that informs on a subection of the main subject to create richer context.
