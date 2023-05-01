@@ -9,7 +9,7 @@ paths:
   /query:
     post:
       summary: Query
-      description: Accepts search query objects array each with query and optional filter. Break down complex questions into sub-questions. Search for wider terms and expressions, especially if an inital search wields no information. Split queries if ResponseTooLargeError occurs.
+      description: Accepts search query objects array each with query and optional filter. Break down complex questions into sub-questions. Always search neigbouring expressions / reformulations as well to get more context. Search for wider terms and expressions, especially if an inital search wields no information. Split queries if ResponseTooLargeError occurs.
       operationId: query_query_post
       requestBody:
         content:
