@@ -2,7 +2,7 @@
   "schema_version": "v1",
   "name_for_model": "WikipediaDatabaseSearch",
   "name_for_human": "UnofficialWikipedia",
-  "description_for_model": "Use this tool to access information on Wikipedia, the world's largest encyclopedia. Whenever factual information is required, Wikipedia is a great source.",
+  "description_for_model": "Use this tool to access information on Wikipedia, the world's largest encyclopedia. Whenever factual information is required, Wikipedia is a great source. You may need to retry a few times.",
   "description_for_human": "Access to all of English-language Wikipedia!",
   "auth": {
     "type": "user_http",
